@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-email-composer",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "Provides access to the standard interface that manages the editing and sending an email message",
   "cordova": {
     "id": "de.appplant.cordova.plugin.email-composer",
@@ -40,8 +40,8 @@
   },
   "homepage": "https://github.com/katzer/cordova-plugin-email-composer",
   "scripts": {
-  "postversion": "node scripts/bump-plugin-xml.js; git add plugin.xml; git commit plugin.xml -m \"${npm_package_version}\""
-},
+    "postversion": "node scripts/bump-plugin-xml.js; git add plugin.xml; git commit plugin.xml -m \"${npm_package_version}\""
+  },
   "devDependencies": {
     "libxmljs": "^0.18.4"
   }
