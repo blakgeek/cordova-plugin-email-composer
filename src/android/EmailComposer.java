@@ -21,6 +21,7 @@
 
 package de.appplant.cordova.emailcomposer;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 
@@ -36,7 +37,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("Convert2Diamond")
@@ -46,6 +46,7 @@ public class EmailComposer extends CordovaPlugin {
      * The log tag for this plugin
      */
     static final String LOG_TAG = "EmailComposer";
+    public static final int REQUEST_CODE = 1234;
 
     // Implementation of the plugin.
     private final EmailComposerImpl impl = new EmailComposerImpl();
@@ -63,6 +64,10 @@ public class EmailComposer extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         impl.cleanupAttachmentFolder(getContext());
+
+        if(!cordova.hasPermission(Manifest.permission.GET_ACCOUNTS)) {
+            cordova.requestPermission(this, REQUEST_CODE, Manifest.permission.GET_ACCOUNTS);
+        }
     }
 
     /**
@@ -112,8 +117,10 @@ public class EmailComposer extends CordovaPlugin {
      * The app id.
      */
     private void isAvailable (final String id) {
+
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
+
                 boolean[] available = impl.canSendMail(id, getContext());
                 List<PluginResult> messages = new ArrayList<PluginResult>();
 
