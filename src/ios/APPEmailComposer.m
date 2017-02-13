@@ -26,7 +26,7 @@
     #import <Cordova/NSData+Base64.h>
 #endif
 #import <MobileCoreServices/MobileCoreServices.h>
-
+#import <INKMailHandler.h>
 #include "TargetConditionals.h"
 
 @interface APPEmailComposer ()
@@ -93,6 +93,9 @@
             [self openURLFromProperties:props];
             return;
         }
+
+//        INKMailHandler *mailHandler = [[INKMailHandler alloc] init];
+//        [[mailHandler sendMailTo:@"steve@apple.com"] presentModally];
 
         if (TARGET_IPHONE_SIMULATOR) {
             [self informAboutIssueWithSimulators];

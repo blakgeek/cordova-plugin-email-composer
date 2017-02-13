@@ -38,5 +38,11 @@
   "bugs": {
     "url": "https://github.com/katzer/cordova-plugin-email-composer/issues"
   },
-  "homepage": "https://github.com/katzer/cordova-plugin-email-composer"
+  "homepage": "https://github.com/katzer/cordova-plugin-email-composer",
+  "scripts": {
+  "postversion": "node scripts/bump-plugin-xml.js; git add plugin.xml; git commit plugin.xml -m \"${npm_package_version}\""
+},
+  "devDependencies": {
+    "libxmljs": "^0.18.4"
+  }
 }

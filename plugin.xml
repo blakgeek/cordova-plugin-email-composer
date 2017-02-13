@@ -45,6 +45,8 @@
         <engine name="cordova" version=">=3.0.0" />
     </engines>
 
+    <dependency id="cordova-plugin-cocoapod-support"/>
+
     <!-- interface -->
     <js-module src="www/email_composer.js" name="EmailComposer">
         <clobbers target="cordova.plugins.email" />
@@ -63,6 +65,8 @@
         <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
             <array>
                 <string>mailto</string>
+                <string>googlegmail</string>
+                <string>inbox-gmail</string>
             </array>
         </config-file>
 
@@ -73,6 +77,7 @@
 
         <framework src="MessageUI.framework" />
         <framework src="MobileCoreServices.framework" />
+        <pod id="IntentKit/Mail"/>
 
     </platform>
 

@@ -19,15 +19,15 @@
     under the License.
 */
 
-var exec      = require('cordova/exec'),
-    isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1,
-    mailto    = 'mailto:';
+var exec      = require('cordova/exec');
+var isAndroid = cordova.platformId === 'android';
+var mailto = 'mailto:';
 
 /**
  * List of all registered mail app aliases.
  */
 exports.aliases = {
-    gmail: isAndroid ? 'com.google.android.gm' : 'googlemail:'
+    gmail: isAndroid ? 'com.google.android.gm' : 'googlegmail:'
 };
 
 /**

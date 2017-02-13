@@ -1,2 +1,4 @@
 /platforms
 /out
+.idea/
+*.iml
